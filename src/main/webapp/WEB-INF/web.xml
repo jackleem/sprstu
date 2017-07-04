@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+            http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!-- use this to dispatch http request and distribute to backend -->
+
+    <!-- welcome page -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- servlet setting for spring mvc -->
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <!-- use this as the dispatcher servlet -->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- dispatcher setting file location -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
+        <!-- set priority for load which servlet when application start  -->
+        <load-on-startup>1</load-on-startup>
+        <!-- open the async support -->
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <!-- the name should be the same with the servlet name define above -->
+        <servlet-name>springMVC</servlet-name>
+        <!-- URL in browser to visit the servlet -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
